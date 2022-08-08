@@ -10,6 +10,7 @@ const headerStyle = {
 }
 
 const spanStyle = {
+    marginLeft: "10px",
     fontWeigth: 500,
     fontSize: "small"
 }
