@@ -31,3 +31,27 @@ export interface ICoords {
 export interface IStationMap {
     coords: ICoords
 }
+
+export interface IPageoptions {
+    page: number,
+    limit: number,
+}
+
+export interface IJourneyItem {
+    _id: string,
+    count: number,
+    Departure_station_name: string,
+    Return_station_name: string,
+    Covered_distance: number,
+    Duration: number,
+}
+
+export interface IJourneyList {
+    journeyItems: IJourneyItem[],
+    pageOptions: IPageoptions,
+    sortOrder: string,
+    changeSortingRow(event: React.MouseEvent<HTMLButtonElement>): void
+    changeSortingOrder(event: React.MouseEvent<HTMLButtonElement>): void
+    changePageNext(event: React.MouseEvent<HTMLButtonElement>): void
+    changePagePrev(event: React.MouseEvent<HTMLButtonElement>): void
+}
