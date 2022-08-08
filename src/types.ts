@@ -55,3 +55,14 @@ export interface IJourneyList {
     changePageNext(event: React.MouseEvent<HTMLButtonElement>): void
     changePagePrev(event: React.MouseEvent<HTMLButtonElement>): void
 }
+
+export interface IInfoSort {
+    sortBy: string,
+    sortOrder: string,
+}
+
+export interface IPageChanger {
+    isLoading: boolean,
+    changePageNext(event: React.MouseEvent<HTMLButtonElement>): void
+    changePagePrev(event: React.MouseEvent<HTMLButtonElement>): void
+}

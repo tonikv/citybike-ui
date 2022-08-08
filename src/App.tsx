@@ -4,6 +4,8 @@ import SelectStation from './components/SelectStation';
 import StationItem from './components/StationItem';
 import StationMap from './components/StationMap';
 import JourneyItems from './components/JourneyItems';
+import InfoAboutSort from './components/InfoAboutSort';
+import PageChanger from './components/PageChanger';
 import './App.css';
 import { IPageoptions} from './types';
 
@@ -152,6 +154,15 @@ function App() {
             changeSortingOrder={changeSortingOrder}
             changePageNext={changePageNext}
             changePagePrev={changePagePrev}
+        />
+        <InfoAboutSort
+            sortBy={sortBy}
+            sortOrder={sortOrder}
+        />
+        <PageChanger
+            isLoading={isLoading}
+            changePagePrev={changePagePrev}
+            changePageNext={changePageNext}
         />
         
       </div>
