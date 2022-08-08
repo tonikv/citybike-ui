@@ -22,3 +22,12 @@ export interface ISelectStation {
 export interface IStationShow {
     singleStation: IStationItem | null,
 }
+
+export interface ICoords {
+    x: number,
+    y: number
+}
+
+export interface IStationMap {
+    coords: ICoords
+}

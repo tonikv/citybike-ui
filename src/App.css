@@ -33,3 +33,8 @@
   border-radius: 10px;
   box-shadow: 10px 10px 10px 10px rgb(116, 115, 115);
 }
+
+.leaflet-container {
+  width: var(--window-width-desktop);
+  height: 300px;
+}

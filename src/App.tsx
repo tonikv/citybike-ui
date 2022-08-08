@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import SelectStation from './components/SelectStation';
 import StationItem from './components/StationItem';
+import StationMap from './components/StationMap';
 import './App.css';
 
 const BASE_URL = "https://citybikedata.herokuapp.com"
@@ -72,6 +73,9 @@ function App() {
           />
           <StationItem
             singleStation={station.single}
+          />
+          <StationMap
+            coords={coords}
           />
       </div>
     </div>
