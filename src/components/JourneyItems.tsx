@@ -3,20 +3,28 @@ import Button from 'react-bootstrap/Button';
 import JourneyItem from './JourneyItem';
 import { IJourneyItem, IJourneyList } from '../types';
 
+const btnStyle = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  width: "100%",
+  height: 20
+}
+
 const JourneyItems: React.FC<IJourneyList> = ({ journeyItems, pageOptions, sortOrder, changeSortingRow, changeSortingOrder}) => {
   let documentNumber = pageOptions.page * pageOptions.limit;
   let sortOrderDisplay = sortOrder === "-1" ? "DESC" : "ASC"
 
   return (<>
-    <h1 className="header_selector">JOURNEYS LIST</h1>
+    <h1>JOURNEYS LIST</h1>
       <Table striped bordered hover size="sm" responsive="sm">
         <thead>
           <tr>
-            <th><Button className="bt-small" size="sm" variant="danger" onClick={changeSortingOrder}>{sortOrderDisplay}</Button></th>
-            <th className="table_header">Departure Station <Button className="bt-small" size="sm" name="Departure_station_name"  onClick={changeSortingRow}>SORT</Button></th>
-            <th className="table_header">Return Station <Button className="bt-small" size="sm"name="Return_station_name"  onClick={changeSortingRow}>SORT</Button></th>
-            <th className="table_header">Covered Distance km<Button className="bt-small" size="sm" name="Covered_distance" onClick={changeSortingRow}>SORT</Button></th>
-            <th className="table_header">Duration minutes<Button className="bt-small" size="sm" name="Duration" onClick={changeSortingRow}>SORT</Button></th>
+            <th><Button style={btnStyle} size="sm" variant="danger" onClick={changeSortingOrder}>{sortOrderDisplay}</Button></th>
+            <th >Departure Station <Button style={btnStyle} size="sm" name="Departure_station_name"  onClick={changeSortingRow}>SORT</Button></th>
+            <th >Return Station <Button style={btnStyle} size="sm"name="Return_station_name"  onClick={changeSortingRow}>SORT</Button></th>
+            <th >Covered Distance km<Button style={btnStyle} size="sm" name="Covered_distance" onClick={changeSortingRow}>SORT</Button></th>
+            <th >Duration minutes<Button style={btnStyle} size="sm" name="Duration" onClick={changeSortingRow}>SORT</Button></th>
           </tr>
         </thead>
         <tbody>
