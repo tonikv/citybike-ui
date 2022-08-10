@@ -1,3 +1,7 @@
+/*
+    Show individual Journey item. Data comes from JourneyItems component
+*/
+
 import { IJourneyItem } from '../types';
 
 const JourneyItem: React.FC<IJourneyItem> = (props: IJourneyItem) => {

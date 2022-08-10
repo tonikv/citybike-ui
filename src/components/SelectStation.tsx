@@ -1,6 +1,9 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form'
 import { ISelectStation, IStationItem } from '../types'
+/*
+  Gives user option to choose station to show on StationItem and StationMap components.
+*/
 
 const mainStyle = {
     paddingTop: "10px",

@@ -1,3 +1,8 @@
+/* 
+  Handle viewing of journey data
+  Change sorting options with buttons
+*/
+
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import JourneyItem from './JourneyItem';
@@ -11,12 +16,24 @@ const btnStyle = {
   height: 20
 }
 
-const JourneyItems: React.FC<IJourneyList> = ({ journeyItems, pageOptions, sortOrder, changeSortingRow, changeSortingOrder}) => {
+const headerStyle = {
+  marginTop: "10px",
+  fontSize: "24px"
+}
+
+const JourneyItems: React.FC<IJourneyList> = ({ journeyItems, pageOptions, sortOrder, changeSortingRow, changeSortingOrder }) => {
+  if (journeyItems.length === 0) {
+    return (
+      <>
+        <h1>Still waiting for data</h1>
+      </>
+    )
+  }
   let documentNumber = pageOptions.page * pageOptions.limit;
   let sortOrderDisplay = sortOrder === "-1" ? "DESC" : "ASC"
 
   return (<>
-    <h1>JOURNEYS LIST</h1>
+    <h1 style={headerStyle}>JOURNEYS LIST</h1>
       <Table striped bordered hover size="sm" responsive="sm">
         <thead>
           <tr>
@@ -36,8 +53,8 @@ const JourneyItems: React.FC<IJourneyList> = ({ journeyItems, pageOptions, sortO
                 count={documentNumber++}
                 Departure_station_name={journey.Departure_station_name}
                 Return_station_name={journey.Return_station_name}
-                Covered_distance={Number((journey.Covered_distance / 1000).toFixed(2))}
-                Duration={Number((journey.Duration / 60).toFixed(2))}
+                Covered_distance={Number((journey.Covered_distance / 1000).toFixed(2))} //Convert meters to kilometers
+                Duration={Number((journey.Duration / 60).toFixed(2))} // Convert seconds to minutes
                 />
               )
             })}

@@ -1,3 +1,7 @@
+/*
+    Show current sorting parameters to user. State comes from main app.
+*/
+
 import { IInfoSort } from '../types';
 
 const mainStyle = {

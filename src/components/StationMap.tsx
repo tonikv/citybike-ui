@@ -1,3 +1,7 @@
+/*
+  Show station on map. 
+*/
+
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import { Button } from 'react-bootstrap';

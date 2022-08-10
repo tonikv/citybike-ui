@@ -1,3 +1,7 @@
+/*
+    Show spinner and loading text if fetching of data is still on progress. State of loading is handled in main app.
+*/
+
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 

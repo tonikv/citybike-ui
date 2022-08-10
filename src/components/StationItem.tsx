@@ -1,5 +1,8 @@
-import Table from 'react-bootstrap/Table';
+/*
+    Show single station data.
+*/
 
+import Table from 'react-bootstrap/Table';
 import { IStationShow } from '../types';
 
 const StationItem: React.FC<IStationShow> = ( {singleStation} ) => {

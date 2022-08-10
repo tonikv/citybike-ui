@@ -1,3 +1,7 @@
+/*
+    Handles buttons to change page for journeyitem. Pass data to main state to reload data according to page.
+*/
+
 import Button from 'react-bootstrap/Button';
 import LoadingData from '../components/LoadingData';
 
