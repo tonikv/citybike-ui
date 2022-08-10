@@ -36,3 +36,19 @@
   width: var(--window-width-desktop);
   height: 300px;
 }
+
+@media only screen and (max-width: 600px) {
+
+  .Content-container {
+    line-height: 12px;
+  }
+
+  .leaflet-container {
+    width: var(--window-width-mobile);
+    height: 180px;
+  }
+
+  body {
+    background-color: lightblue;
+  }
+}
