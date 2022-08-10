@@ -6,17 +6,17 @@
 
 :root {
   --window-width-desktop: 700px;
+  --window-width-mobile: 340px;
   --background-color-main: rgb(172, 172, 192);
 }
 
 .App-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  margin: 0 auto;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background-color: var(--background-color-main);
 }
 
@@ -25,10 +25,8 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  margin-top: 10px;
-  margin: 0 auto;
-  padding: 0 40px 0 40px;
-  height: 100%;
+  min-height: 1100px;
+  padding: 0 40px 50px 40px;
   background-color: rgb(236, 236, 236);
   border-radius: 10px;
   box-shadow: 10px 10px 10px 10px rgb(116, 115, 115);
