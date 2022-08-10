@@ -6,7 +6,7 @@
 
 :root {
   --window-width-desktop: 700px;
-  --window-width-mobile: 340px;
+  --window-width-mobile: 300px;
   --background-color-main: rgb(172, 172, 192);
 }
 
@@ -23,10 +23,10 @@
 .Content-container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
   min-height: 1100px;
-  padding: 0 40px 50px 40px;
+  min-width: var(--window-width-mobile);
+  padding: 0 20px 20px 20px;
   background-color: rgb(236, 236, 236);
   border-radius: 10px;
   box-shadow: 10px 10px 10px 10px rgb(116, 115, 115);
@@ -37,15 +37,27 @@
   height: 300px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
 
   .Content-container {
+    margin: 0 10px 0 10px;
     line-height: 12px;
+    padding: 0 5px 0 5px;
+    min-height: 800px;
+  }
+
+  .Content-container Table {
+    font-size: x-small;
+  }
+
+  .Content-container Button {
+    font-size: x-small;
+    padding: 2px;
   }
 
   .leaflet-container {
-    width: var(--window-width-mobile);
-    height: 180px;
+    width: 300px;
+    height: 150px;
   }
 
   body {
