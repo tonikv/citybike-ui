@@ -19,7 +19,7 @@ function App() {
 
   const [station, setStation] = useState({ single: null, all: null });
   const [journeys, setJourneys] = useState([]);
-  const [coords, setCoords] = useState({ x: 25.00, y: 60.00 });
+  const [coords, setCoords] = useState({ x: 24.945831, y: 60.192059 });
   const [isLoading, setLoading] = useState<boolean>(false);
   const [sortBy, setSortBy] = useState<string>("Duration");
   const [sortOrder, setSortOrder] = useState<string>("-1");
@@ -75,6 +75,7 @@ function App() {
    /* Used in SelectStation component. This will get selected station FID information from form selector 
   and fetch station data from database. StationItem component then renders information accordingly*/
   const changeStation = async (event: React.ChangeEvent<HTMLSelectElement>) => {
+    event.preventDefault();
     const fetchStation = await fetch(`${BASE_URL}/stations/byFID/${event.target.value}`);
     try {
       setLoading(true);
