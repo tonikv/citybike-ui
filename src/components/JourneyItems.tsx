@@ -25,7 +25,7 @@ const JourneyItems: React.FC<IJourneyList> = ({ journeyItems, pageOptions, sortO
   if (journeyItems.length === 0) {
     return (
       <>
-        <h1>Still waiting for data</h1>
+        <h1 style={headerStyle}>Waiting for data</h1>
       </>
     )
   }
