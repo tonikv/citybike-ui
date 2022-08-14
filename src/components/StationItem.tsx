@@ -15,7 +15,6 @@ const StationItem: React.FC<IStationShow> = ( {singleStation} ) => {
         <Table striped bordered hover size="sm">
             <thead>
                 <tr>
-                    <th>FID</th>
                     <th>Station Name</th>
                     <th>Address</th>
                     <th>Capacity</th>
@@ -25,7 +24,6 @@ const StationItem: React.FC<IStationShow> = ( {singleStation} ) => {
             </thead>
             <tbody>
                 <tr>
-                    <td>{singleStation.FID}</td>
                     <td>{singleStation.Nimi}</td>
                     <td>{singleStation.Osoite}</td>
                     <td>{singleStation.Kapasiteetti}</td>
