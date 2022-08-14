@@ -41,7 +41,7 @@ function DisplayPosition({ map, coords }:any) {
   return (
     <p>
       latitude: {position.lat.toFixed(4)}, longitude: {position.lng.toFixed(4)}{' '}
-      <Button variant="secondary" onClick={onClick}>Find Station</Button>
+      <Button variant="primary" onClick={onClick}>Find Station</Button>
     </p>
   )
 }
