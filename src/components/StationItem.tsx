@@ -8,7 +8,7 @@ import { IStationShow } from '../types';
 const StationItem: React.FC<IStationShow> = ( {singleStation} ) => {
     
     if (singleStation === null) {
-        return <p>Loading data</p>
+        return <p style={{paddingTop: 4}}>Loading data</p>
     }
 
     return (
