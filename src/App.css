@@ -24,12 +24,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 1100px;
   min-width: var(--window-width-mobile);
+  min-height: 1100px;
   padding: 0 20px 20px 20px;
   background-color: rgb(236, 236, 236);
-  border-radius: 10px;
-  box-shadow: 10px 10px 10px 10px rgb(116, 115, 115);
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px 5px rgb(116, 115, 115);
 }
 
 .leaflet-container {
@@ -43,7 +43,7 @@
     margin: 0 10px 0 10px;
     line-height: 12px;
     padding: 0 5px 0 5px;
-    min-height: 800px;
+    min-height: 720px;
   }
 
   .Content-container Table {
@@ -56,11 +56,12 @@
   }
 
   .Content-container p span {
+    line-height: 14px;
     font-size: x-small;
   }
 
   .leaflet-container {
-    width: 300px;
+    width: 340px;
     height: 150px;
   }
 }
