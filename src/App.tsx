@@ -76,20 +76,18 @@ function App() {
   and fetch station data from database. StationItem component then renders information accordingly*/
   const changeStation = async (event: React.ChangeEvent<HTMLSelectElement>) => {
     event.preventDefault();
-    const fetchStation = await fetch(`${BASE_URL}/stations/byFID/${event.target.value}`);
     try {
-      setLoading(true);
+      const fetchStation = await fetch(`${BASE_URL}/stations/byFID/${event.target.value}`);
       const data = await fetchStation.json();
       
       setStation({
-        single: data,
-        all: station.all,
+        ...station, single: data,
       });
+
       setCoords({
         x: data.x,
         y: data.y
       });
-      setLoading(false);
 
     } catch (err) {
       alert(err);
@@ -99,8 +97,9 @@ function App() {
   // Functions to change request params to journey data
    const changeSortingOrder = (event: React.MouseEvent<HTMLButtonElement>) => { 
     event.preventDefault();
-    let changeState = sortOrder === "-1" ? "1" : "-1";
+    let changeState = sortOrder === "-1" ? "1" : "-1"; 
     setSortOrder(changeState);
+    setPageOptions(defaultPageOption);
   }
 
   const changeSortingRow = (event: React.MouseEvent<HTMLButtonElement>) => {
