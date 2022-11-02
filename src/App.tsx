@@ -9,7 +9,7 @@ import PageChanger from './components/PageChanger';
 import './App.css';
 import { IPageoptions} from './types';
 
-const BASE_URL = "https://citybikedata.herokuapp.com"
+const BASE_URL = "https://citybike.onrender.com"
 
 function App() {
   const defaultPageOption:IPageoptions = {
