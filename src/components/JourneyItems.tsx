@@ -1,4 +1,4 @@
-/* 
+/*
   Handle viewing of journey data
   Change sorting options with buttons
 */
@@ -7,41 +7,78 @@ import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import JourneyItem from './JourneyItem';
 import { IJourneyItem, IJourneyList } from '../types';
+import { useState } from 'react';
+import '../App.css';
+import PageChanger from './PageChanger';
+import InfoAboutSort from './InfoAboutSort';
+import LoadingData from './LoadingData';
 
 const btnStyle = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   width: "100%",
-  height: 20
+  height: 18,
 }
 
 const headerStyle = {
-  marginTop: "10px",
-  fontSize: "24px"
+  paddingTop: "25px",
+  fontSize: "28px",
+  textAlign: "center" as "center",
 }
 
-const JourneyItems: React.FC<IJourneyList> = ({ journeyItems, pageOptions, sortOrder, changeSortingRow, changeSortingOrder }) => {
-  if (journeyItems.length === 0) {
+const spanStyle = {
+  fontFamily: "Consolas, monospace",
+  marginLeft: "30px",
+}
+
+const JourneyItems: React.FC<IJourneyList> = ({ journeyItems, pageOptions, sortOrder, sortBy, isLoading, changeSortingRow, changeSortingOrder, changePagePrev, changePageNext }) => {
+  const [displayJourneys, setDisplayJourneys] = useState(true);
+
+  const displayJourneysList = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    setDisplayJourneys(!displayJourneys);
+  }
+
+  // If no data is loaded, show loading spinner
+  if (journeyItems === null || journeyItems === undefined || journeyItems.length === 0) {
+    return (
+      <div style={headerStyle}>
+        <LoadingData />
+      </div>
+    )
+  }
+
+  // If data is loaded, but not displayed, show button to display data
+  if (!displayJourneys) {
     return (
       <>
-        <h1 style={headerStyle}>Waiting for data</h1>
+        <h1 style={headerStyle}> JOURNEYS LIST
+          <span style={spanStyle}>
+            <Button size="sm" onClick={displayJourneysList}>Show</Button>
+          </span>
+        </h1>
       </>
     )
   }
+
   let documentNumber = pageOptions.page * pageOptions.limit;
-  let sortOrderDisplay = sortOrder === "-1" ? "DESC" : "ASC"
+  const sortOrderDisplay = sortOrder === "asc" ? "ASC" : "DESC"
 
   return (<>
-    <h1 style={headerStyle}>JOURNEYS LIST</h1>
-      <Table striped bordered hover size="sm" responsive="sm">
+    <h1 style={headerStyle}>JOURNEYS LIST
+      <span style={spanStyle}>
+      <Button size="sm"  onClick={displayJourneysList}>Hide</Button>
+      </span>
+    </h1>
+      <Table striped bordered hover size="sm" className="tableWidth">
         <thead>
           <tr>
-            <th><Button style={btnStyle} size="sm" variant="danger" onClick={changeSortingOrder}>{sortOrderDisplay}</Button></th>
-            <th >Departure Station <Button style={btnStyle} size="sm" name="Departure_station_name"  onClick={changeSortingRow}>SORT</Button></th>
-            <th >Return Station <Button style={btnStyle} size="sm"name="Return_station_name"  onClick={changeSortingRow}>SORT</Button></th>
-            <th >Covered Distance km<Button style={btnStyle} size="sm" name="Covered_distance" onClick={changeSortingRow}>SORT</Button></th>
-            <th >Duration minutes<Button style={btnStyle} size="sm" name="Duration" onClick={changeSortingRow}>SORT</Button></th>
+            <th><Button disabled={isLoading} style={btnStyle} size="sm" variant="danger" onClick={changeSortingOrder}>{sortOrderDisplay}</Button></th>
+          <th >Departure Station <Button disabled={isLoading} style={btnStyle} size="sm" name="Departure_station_name" onClick={changeSortingRow}>SORT</Button></th>
+            <th >Return Station <Button disabled={isLoading} style={btnStyle} size="sm"name="Return_station_name"  onClick={changeSortingRow}>SORT</Button></th>
+            <th >Covered Dist km <Button disabled={isLoading} style={btnStyle} size="sm" name="Covered_distance" onClick={changeSortingRow}>SORT</Button></th>
+            <th >Duration min <Button disabled={isLoading} style={btnStyle} size="sm" name="Duration" onClick={changeSortingRow}>SORT</Button></th>
           </tr>
         </thead>
         <tbody>
@@ -59,7 +96,16 @@ const JourneyItems: React.FC<IJourneyList> = ({ journeyItems, pageOptions, sortO
               )
             })}
         </tbody>
-    </Table>
+      </Table>
+      <InfoAboutSort
+          sortBy={sortBy}
+          sortOrder={sortOrder}
+      />
+      <PageChanger
+          isLoading={isLoading}
+          changePagePrev={changePagePrev}
+          changePageNext={changePageNext}
+      />
     </>
   )
 }
