@@ -10,7 +10,7 @@ const headerStyle = {
     height: "50",
     backgroundColor: "rgb(172,172,192)",
     color: "black",
-  fontWeight: 800,
+    fontWeight: 800,
     fontSize: "2em"
 }
 
