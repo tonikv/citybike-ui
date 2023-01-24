@@ -5,7 +5,8 @@
 import { IJourneyItem } from '../types';
 
 const JourneyItem: React.FC<IJourneyItem> = (props: IJourneyItem) => {
-    return (<tr>
+    return (
+        <tr>
             <td>{props.count + 1}</td>
             <td>{props.Departure_station_name}</td>
             <td>{props.Return_station_name}</td>
