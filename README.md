@@ -5,8 +5,8 @@ This is a React functional component that displays data about bike stations and 
 ## Features
 
 - Users can select a station from a dropdown list
-- Users can view a list of journeys for the selected station
-- Users can sort the journey data by duration, distance, or start time
+- Users can view a list of journeys
+- Users can sort the journey data by duration, distance, and station name
 - Users can paginate through the journey data
 - Loading state is displayed while data is being retrieved from the API
 
@@ -19,6 +19,15 @@ To run the project, you will need to have [Node.js](https://nodejs.org/) and [np
 3. Start the server: `npm start`
 
 Open `http://localhost:3000/citybike-ui` to view the app in the browser.
+
+## Testing
+
+Project uses [Jest](https://jestjs.io/) for unit testing
+To run the tests, use the command `npm test`.
+
+## Deployment
+
+- Project is hosted on [Github Pages](https://tonikv.github.io/citybike-ui/)
 
 ## Built With
 
