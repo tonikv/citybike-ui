@@ -2,115 +2,89 @@ import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import SelectStation from './components/SelectStation';
 import StationItem from './components/StationItem';
-import StationMap from './components/StationMap';
 import JourneyItems from './components/JourneyItems';
-import InfoAboutSort from './components/InfoAboutSort';
-import PageChanger from './components/PageChanger';
 import './App.css';
-import { IPageoptions} from './types';
-
-const BASE_URL = "https://citybike.onrender.com"
+import { IPageoptions, IStationItem, IJourneyItem, sortOrderType, sortByType } from './types';
 
 function App() {
-  const defaultPageOption:IPageoptions = {
-    page: 0,
-    limit: 10,
-  }
-
-  const [station, setStation] = useState({ single: null, all: null });
-  const [journeys, setJourneys] = useState([]);
-  const [coords, setCoords] = useState({ x: 24.945831, y: 60.192059 });
+  const defaultPageOption: IPageoptions = { page: 0, limit: 10 };
+  const [station, setStation] = useState<IStationItem | null>(null);
+  const [allStations, setAllStations] = useState<IStationItem[] | null>(null);
+  const [journeys, setJourneys] = useState<IJourneyItem[] | null>(null);
   const [isLoading, setLoading] = useState<boolean>(false);
-  const [sortBy, setSortBy] = useState<string>("Duration");
-  const [sortOrder, setSortOrder] = useState<string>("-1");
-  const [pageOptions, setPageOptions] = useState<IPageoptions>(defaultPageOption)
-  
-  // URI to access server for data
-  let allStationsURI = `${BASE_URL}/stations/all`;
-  let stationByFidURI = `${BASE_URL}/stations/byFID/1`;
+  const [sortBy, setSortBy] = useState<sortByType>("Duration");
+  const [sortOrder, setSortOrder] = useState<sortOrderType>("asc");
+  const [pageOptions, setPageOptions] = useState<IPageoptions>(defaultPageOption);
+  const BASE_URL = "https://citybike.onrender.com";
+
+  // URI to access server for data.
   let journeysURI = `${BASE_URL}/journeys/sorted/${pageOptions.page}/${pageOptions.limit}/${sortBy}/${sortOrder}/`;
 
-  // Load stations data and pass it to application state. Loads whole stations data and one according to user selection.
+  // Load stations data and pass it to application state. Loads whole stations data. Also sets first station to state.
   useEffect(() => {
-    const fetchStationsData = async () => {
-      setLoading(true);
+    const fetchAllStationsData = async () => {
       try {
-        const allStationsResponse = await fetch(allStationsURI);
-        const singleStationResponse = await fetch(stationByFidURI);
+        const allStationsResponse = await fetch("https://citybike.onrender.com/stations/all");
         const allStationsData = await allStationsResponse.json()
-        const singleStationData = await singleStationResponse.json();
-
-        setStation({
-          single: singleStationData, 
-          all: allStationsData,
-        });
-
-        setLoading(false);
+        setAllStations(allStationsData);
+        setStation(allStationsData[0]);
       } catch (err) {
         alert(err);
       }
     };
 
-    fetchStationsData();
-  }, [allStationsURI, stationByFidURI]);
+    fetchAllStationsData();
+  }, [])
 
   // Load Journeys data according page, limit, sort field and sort order
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchJourneysData = async () => {
       setLoading(true);
       try {
         const response = await fetch(journeysURI);
         const data = await response.json()
         setJourneys(data);
-        setLoading(false);
       } catch (err) {
         alert(err);
       }
+      setLoading(false);
     };
 
-    fetchData();
+    fetchJourneysData();
+
   }, [journeysURI]);
 
 
-   /* Used in SelectStation component. This will get selected station FID information from form selector 
-  and fetch station data from database. StationItem component then renders information accordingly*/
+   // This function is called when user selects station from dropdown list. Changes station state.
   const changeStation = async (event: React.ChangeEvent<HTMLSelectElement>) => {
     event.preventDefault();
-    try {
-      const fetchStation = await fetch(`${BASE_URL}/stations/byFID/${event.target.value}`);
-      const data = await fetchStation.json();
-      
-      setStation({
-        ...station, single: data,
-      });
+    if (allStations === null || allStations === undefined) return;
 
-      setCoords({
-        x: data.x,
-        y: data.y
-      });
-
-    } catch (err) {
-      alert(err);
-    }
+    const pickStation = allStations.find((station) => station.FID === parseInt(event.target.value));
+    if (pickStation === undefined) return;
+    setStation(pickStation);
   }
 
-  // Functions to change request params to journey data
-   const changeSortingOrder = (event: React.MouseEvent<HTMLButtonElement>) => { 
+  // Button event to change request params to journey data.
+   const changeSortingOrder = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    let changeState = sortOrder === "-1" ? "1" : "-1"; 
+    const changeState = sortOrder === "asc" ? "desc" : "asc";
     setSortOrder(changeState);
     setPageOptions(defaultPageOption);
   }
 
+  // Button event to change request params to journey data.
   const changeSortingRow = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     const button: HTMLButtonElement = event.currentTarget;
-    setSortBy(button.name);
+    const buttonName = button.name as sortByType;
+    setSortBy(buttonName);
     setPageOptions(defaultPageOption);
     journeysURI = `${BASE_URL}/journeys/sorted/${pageOptions.page}/${pageOptions.limit}/${sortBy}/${sortOrder}/`;
   };
 
-  const changePageNext = (event: React.MouseEvent<HTMLButtonElement>) => { 
+  // Button event to change request params to journey data.
+  const changePageNext = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     const nextPage:IPageoptions = {
       page: pageOptions.page + 1,
@@ -119,7 +93,8 @@ function App() {
     setPageOptions(nextPage);
   }
 
-  const changePagePrev = (event: React.MouseEvent<HTMLButtonElement>) => { 
+  // Button event to change request params to journey data.
+  const changePagePrev = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     if (pageOptions.page === 0) {
       return;
@@ -136,35 +111,25 @@ function App() {
       <Header />
       <div className="Content-container">
           <SelectStation
-            stationItems={station.all}
+            stationItems={allStations}
             changeStation={changeStation}
           />
           <StationItem
-            singleStation={station.single}
+            station={station}
           />
-          <StationMap
-            coords={coords}
-        />
-        
+
         <JourneyItems
+            isLoading={isLoading}
             journeyItems={journeys}
             pageOptions={pageOptions}
+            sortBy={sortBy}
             sortOrder={sortOrder}
             changeSortingRow={changeSortingRow}
             changeSortingOrder={changeSortingOrder}
             changePageNext={changePageNext}
             changePagePrev={changePagePrev}
         />
-        <InfoAboutSort
-            sortBy={sortBy}
-            sortOrder={sortOrder}
-        />
-        <PageChanger
-            isLoading={isLoading}
-            changePagePrev={changePagePrev}
-            changePageNext={changePageNext}
-        />
-        
+
       </div>
     </div>
   );
