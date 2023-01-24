@@ -7,8 +7,8 @@ import Spinner from 'react-bootstrap/Spinner';
 
 const LoadingData = () => {
     return (
-            <div className="d-grid gap-2 loading">
-                <Button variant="danger" size="lg" disabled>
+            <div className="d-grid gap-2 loading m-1">
+                <Button variant="danger" size="sm" disabled>
                     <Spinner
                     as="span"
                     animation="grow"
