@@ -1,3 +1,6 @@
+export type sortOrderType = "asc" | "desc";
+export type sortByType = "count" | "Departure_station_name" | "Return_station_name" | "Covered_distance" | "Duration";
+
 export interface IStationItem {
     FID: number,
     ID: number,
@@ -9,7 +12,9 @@ export interface IStationItem {
     x: number,
     y: number,
     Ending_station_count: number,
-    Starting_station_count: number
+    Starting_station_count: number,
+    Average_journey_distance_starting: Number,
+    Average_journey_distance_ending: Number,
 }
 
 //SelectStation component
@@ -20,16 +25,32 @@ export interface ISelectStation {
 
 //StationItem component
 export interface IStationShow {
-    singleStation: IStationItem | null,
+    station: IStationItem | null,
+}
+
+export interface IStationData {
+    Departure_station_name: string,
+    Return_station_name: string,
+    count: number,
+}
+
+export interface IStationDataList {
+    stationDataList: IStationData[] | null,
+}
+
+export interface IDrawMap {
+    center: ICoords,
+    zoom: number,
+    position: ICoords,
 }
 
 export interface ICoords {
-    x: number,
-    y: number
+    lat: number,
+    lng: number,
 }
 
 export interface IStationMap {
-    coords: ICoords
+    stationPosition: ICoords
 }
 
 export interface IPageoptions {
@@ -47,9 +68,11 @@ export interface IJourneyItem {
 }
 
 export interface IJourneyList {
-    journeyItems: IJourneyItem[],
+    journeyItems: IJourneyItem[] | null,
     pageOptions: IPageoptions,
-    sortOrder: string,
+    sortOrder: sortOrderType,
+    sortBy: string,
+    isLoading: boolean,
     changeSortingRow(event: React.MouseEvent<HTMLButtonElement>): void
     changeSortingOrder(event: React.MouseEvent<HTMLButtonElement>): void
     changePageNext(event: React.MouseEvent<HTMLButtonElement>): void
@@ -58,7 +81,7 @@ export interface IJourneyList {
 
 export interface IInfoSort {
     sortBy: string,
-    sortOrder: string,
+    sortOrder: sortOrderType,
 }
 
 export interface IPageChanger {
