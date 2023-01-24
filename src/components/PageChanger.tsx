@@ -12,14 +12,15 @@ const mainStyle = {
 }
 
 const PageChanger: React.FC<IPageChanger> = ({ changePageNext, changePagePrev, isLoading }) => {
-    
+
     if (isLoading) {
         return (
             <LoadingData/>
         )
     }
-    return (<div style={mainStyle}>
-            <Button size="sm" onClick={changePagePrev}> Previous Page</Button>
+    return (
+        <div style={mainStyle}>
+            <Button size="sm" onClick={changePagePrev}> Prev Page</Button>
             <Button size="sm" style={{marginLeft: 10}} onClick={changePageNext}> Next Page</Button>
         </div>
     )
