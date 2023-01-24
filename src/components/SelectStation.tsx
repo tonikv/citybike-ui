@@ -10,7 +10,7 @@ const mainStyle = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    flexDirection: "row" as "row" 
+    flexDirection: "row" as "row"
 }
 
 const headerStyle = {
@@ -19,18 +19,20 @@ const headerStyle = {
     fontSize: "x-large"
 }
 
+
 const SelectStation: React.FC<ISelectStation> = ({ stationItems, changeStation }) => {
-  if (stationItems === null) return <></>
+  // If no data is loaded return empty fragment
+  if (stationItems === null || stationItems === undefined ) return <></>
 
   return (
     <div style={mainStyle}>
       <h4 style={headerStyle}>Station</h4>
-      <Form.Select aria-label="Default select example" onChange={changeStation}>
+      <Form.Select aria-label="Select station from list" onChange={changeStation}>
             <option>Select station by name</option>
-        {stationItems.map((station: IStationItem, index: number) => {
+              {stationItems.map((station: IStationItem, index: number) => {
                 return (
-                    <option key={index} value={station.FID}>{station.Nimi}</option>
-              )  
+                    <option data-testid="options" key={index} value={station.FID}>{station.Nimi}</option>
+              )
             })}
       </Form.Select>
     </div>
