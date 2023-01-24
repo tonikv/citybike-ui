@@ -8,6 +8,7 @@
   --window-width-desktop: 700px;
   --window-width-mobile: 300px;
   --background-color-main: rgb(172, 172, 192);
+  --background-color-content: rgb(236, 236, 236);
 }
 
 .App-container {
@@ -25,9 +26,9 @@
   flex-direction: column;
   align-items: center;
   min-width: var(--window-width-mobile);
-  min-height: 1100px;
-  padding: 0 20px 20px 20px;
-  background-color: rgb(236, 236, 236);
+  max-width: var(--window-width-desktop);
+  padding: 0 20px 50px 20px;
+  background-color: var(--background-color-content);
   border-radius: 5px;
   box-shadow: 5px 5px 5px 5px rgb(116, 115, 115);
 }
@@ -35,6 +36,11 @@
 .leaflet-container {
   width: var(--window-width-desktop);
   height: 300px;
+}
+
+.tableWidth {
+  line-height: 1.2;
+  font-size: smaller;
 }
 
 @media only screen and (max-width: 700px) {
