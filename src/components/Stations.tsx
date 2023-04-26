@@ -11,7 +11,7 @@ import StationMap from './StationMap';
 import StationSelect from './StationSelect';
 import '../styles/Stations.css';
 
-const STATIONS_URL = "https://citybike.typescript.onrender.com/stations/all";
+const STATIONS_URL = "https://citybike-typescript.onrender.com/stations/all";
 
 const Stations = () => {
   const { data: stationItems, isLoading } = useFetchData<IStationItem[]>(STATIONS_URL, []);
