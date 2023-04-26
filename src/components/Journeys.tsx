@@ -15,7 +15,7 @@ const Journeys = () => {
     const [sortOrder, setSortOrder] = useState<sortOrderType>("asc");
     const [pageOptions, setPageOptions] = useState<IPageoptions>(defaultPageOption);
     const [isLoading, setLoading] = useState<boolean>(false);
-    const JOURNEYS_URL = "https://citybike.onrender.com/journeys/sorted";
+    const JOURNEYS_URL = "https://citybike.typescript.onrender.com/journeys/sorted";
 
     // URI to access server for data.
     let journeysURI = `${JOURNEYS_URL}/${pageOptions.page}/${pageOptions.limit}/${sortBy}/${sortOrder}/`;
