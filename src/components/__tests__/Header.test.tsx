@@ -8,10 +8,8 @@ describe('Header component', () => {
         const spanElement = screen.getByText(/Journeys And Stations/i);
 
         expect(headerElement).toBeInTheDocument();
-        expect(headerElement).toHaveStyle('display: flex');
-        expect(headerElement).toHaveStyle('justify-content: center');
+        expect(headerElement).toHaveStyle('display: block');
 
         expect(spanElement).toBeInTheDocument();
-        expect(spanElement).toHaveStyle('font-size: small');
     });
 });

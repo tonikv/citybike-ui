@@ -19,13 +19,20 @@ export interface IStationItem {
 
 //SelectStation component
 export interface ISelectStation {
-    stationItems:  IStationItem[] | null,
+    stationItems:  IStationItem[],
     changeStation(event: React.ChangeEvent<HTMLSelectElement>): void
 }
 
+//Stations component
+export interface IStations {
+    handleStationIDChange(event: React.ChangeEvent<HTMLSelectElement>): void,
+}
+
+//
+
 //StationItem component
 export interface IStationShow {
-    station: IStationItem | null,
+    station: IStationItem
 }
 
 export interface IStationData {
@@ -38,19 +45,13 @@ export interface IStationDataList {
     stationDataList: IStationData[] | null,
 }
 
-export interface IDrawMap {
-    center: ICoords,
-    zoom: number,
-    position: ICoords,
-}
-
 export interface ICoords {
     lat: number,
     lng: number,
 }
 
 export interface IStationMap {
-    stationPosition: ICoords
+    station: IStationItem
 }
 
 export interface IPageoptions {
@@ -77,11 +78,6 @@ export interface IJourneyList {
     changeSortingOrder(event: React.MouseEvent<HTMLButtonElement>): void
     changePageNext(event: React.MouseEvent<HTMLButtonElement>): void
     changePagePrev(event: React.MouseEvent<HTMLButtonElement>): void
-}
-
-export interface IInfoSort {
-    sortBy: string,
-    sortOrder: sortOrderType,
 }
 
 export interface IPageChanger {

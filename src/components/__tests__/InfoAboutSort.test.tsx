@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import InfoAboutSort from '../InfoAboutSort';
+import InfoAboutSort from '../JourneysInfoAboutSort';
 
 describe('InfoAboutSort component', () => {
   test('renders info about query descending', () => {

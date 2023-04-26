@@ -1,6 +1,6 @@
-/*
-  Show station on map.
-*/
+/**
+ * Render map with react-leaflet.
+ */
 
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 import { IStationMap } from '../types'
@@ -13,8 +13,6 @@ type ICoords = {
     lat: number;
     lng: number;
 };
-
-
 
 // Update onview coordinates and show station location when station changed.
 function ChangeMapView({ position }: { position: ICoords }) {
@@ -32,14 +30,20 @@ function ChangeMapView({ position }: { position: ICoords }) {
     );
 }
 
-const StationMap: React.FC<IStationMap> = ({ stationPosition }) => {
-      return(
-        <MapContainer center={center} zoom={defaultZoom} scrollWheelZoom={true}>
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                <ChangeMapView position={stationPosition} />
+const StationMap: React.FC<IStationMap> = ({ station }) => {
+        const stationPosition:ICoords = {
+          lat: station.y,
+          lng: station.x
+        }
+
+
+  return (
+          <MapContainer center={center} zoom={defaultZoom} scrollWheelZoom={true} className='map-container'>
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  />
+                  <ChangeMapView position={stationPosition} />
         </MapContainer>
       )
 }

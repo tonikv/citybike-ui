@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+:root {
+  --window-width-desktop: 700px;
+  --window-width-mobile: 300px;
+  --background-color-main: rgb(172, 172, 192);
+  --background-color-content: rgb(236, 236, 236);
+}
+
+.App-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--background-color-main);
+}
+
+.Content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: var(--window-width-mobile);
+  max-width: var(--window-width-desktop);
+  padding: 0 20px 20px 20px;
+  background-color: var(--background-color-content);
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px 5px rgb(116, 115, 115);
+}
+
+/* Styles for header element */
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  background-color: rgb(172, 172, 192);
+  color: black;
+  font-weight: 800;
+  font-size: 2em;
+}
+
+/* Styles for span element within header */
+.header span {
+  margin-left: 10px;
+  font-weight: 500;
+  font-size: small;
+}
+
+
+.tableWidth {
+  line-height: 1.2;
+  font-size: smaller;
+}
+
+@media only screen and (max-width: 700px) {
+
+  .Content-container {
+    margin: 0 10px 0 10px;
+    line-height: 12px;
+    padding: 0 5px 0 5px;
+  }
+
+  .Content-container Table {
+    font-size: x-small;
+  }
+
+  .Content-container Button {
+    font-size: x-small;
+    padding: 2px;
+  }
+
+  .Content-container p span {
+    line-height: 14px;
+    font-size: x-small;
+  }
+
+  .leaflet-container {
+    width: 340px;
+    height: 150px;
+  }
+}

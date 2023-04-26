@@ -1,5 +1,5 @@
 /*
-    Show individual Journey item. Data comes from JourneyItems component
+    Show individual Journey item.
 */
 
 import { IJourneyItem } from '../types';
@@ -7,11 +7,11 @@ import { IJourneyItem } from '../types';
 const JourneyItem: React.FC<IJourneyItem> = (props: IJourneyItem) => {
     return (
         <tr>
-            <td>{props.count + 1}</td>
-            <td>{props.Departure_station_name}</td>
-            <td>{props.Return_station_name}</td>
-            <td>{props.Covered_distance}</td>
-            <td>{props.Duration}</td>
+            <td className="table-cell-fixed-height">{props.count + 1}</td>
+            <td className="table-cell-fixed-height">{props.Departure_station_name}</td>
+            <td className="table-cell-fixed-height">{props.Return_station_name}</td>
+            <td className="table-cell-fixed-height">{props.Covered_distance}</td>
+            <td className="table-cell-fixed-height">{props.Duration}</td>
         </tr>
     )
 }

@@ -1,24 +1,48 @@
-import { render, screen } from '@testing-library/react';
-import PageChanger from '../PageChanger';
+import { render, screen, fireEvent } from '@testing-library/react';
+import PageChanger from '../JourneysPageChanger';
 
 describe('PageChanger component', () => {
 
   test('PageChanger component renders next and prev buttons', () => {
     render(<PageChanger changePageNext={() => { }} changePagePrev={() => { }} isLoading={false} />);
-    const nextButton = screen.getByText(/next page/i);
-    const prevButton = screen.getByText(/prev page/i);
+
+    // Get the buttons by their aria-labels
+    const nextButton = screen.getByLabelText(/next page button/i);
+    const prevButton = screen.getByLabelText(/prev page button/i);
+
+    // Check if the buttons are rendered
     expect(nextButton).toBeInTheDocument();
     expect(prevButton).toBeInTheDocument();
   });
 
-  test('PageChanger component renders loading spinner when isLoading is true', () => {
+  test('PageChanger disables buttons when isLoading is true', () => {
     render(<PageChanger changePageNext={() => { }} changePagePrev={() => { }} isLoading={true} />);
-    const nextButton = screen.queryByText(/next page/i);
-    const prevButton = screen.queryByText(/prev page/i);
-    expect(nextButton).not.toBeInTheDocument();
-    expect(prevButton).not.toBeInTheDocument();
-    const spinner = screen.getByText(/loading/i);
-    expect(spinner).toBeInTheDocument();
+
+    // Get the buttons by their aria-labels
+    const nextButton = screen.queryByLabelText(/next page button/i);
+    const prevButton = screen.queryByLabelText(/prev page button/i);
+
+    // Check if the buttons are disabled
+    expect(nextButton).toBeDisabled();
+    expect(prevButton).toBeDisabled();
+  });
+
+  test('PageChanger component triggers changePageNext and changePagePrev functions when buttons are clicked', () => {
+    const changePageNext = jest.fn();
+    const changePagePrev = jest.fn();
+
+    render(<PageChanger changePageNext={changePageNext} changePagePrev={changePagePrev} isLoading={false} />);
+
+    const nextButton = screen.getByLabelText(/next page button/i);
+    const prevButton = screen.getByLabelText(/prev page button/i);
+
+    // Simulate button clicks
+    fireEvent.click(nextButton);
+    fireEvent.click(prevButton);
+
+    // Check if the corresponding functions were called
+    expect(changePageNext).toHaveBeenCalledTimes(1);
+    expect(changePagePrev).toHaveBeenCalledTimes(1);
   });
 
 });
