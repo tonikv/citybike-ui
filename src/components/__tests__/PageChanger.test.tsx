@@ -1,10 +1,17 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import PageChanger from '../JourneysPageChanger';
+/* eslint-disable @typescript-eslint/no-empty-function */
 
-describe('PageChanger component', () => {
+import { render, screen, fireEvent } from "@testing-library/react";
+import PageChanger from "../JourneysPageChanger";
 
-  test('PageChanger component renders next and prev buttons', () => {
-    render(<PageChanger changePageNext={() => { }} changePagePrev={() => { }} isLoading={false} />);
+describe("PageChanger component", () => {
+  test("PageChanger component renders next and prev buttons", () => {
+    render(
+      <PageChanger
+        changePageNext={() => {}}
+        changePagePrev={() => {}}
+        isLoading={false}
+      />
+    );
 
     // Get the buttons by their aria-labels
     const nextButton = screen.getByLabelText(/next page button/i);
@@ -15,8 +22,14 @@ describe('PageChanger component', () => {
     expect(prevButton).toBeInTheDocument();
   });
 
-  test('PageChanger disables buttons when isLoading is true', () => {
-    render(<PageChanger changePageNext={() => { }} changePagePrev={() => { }} isLoading={true} />);
+  test("PageChanger disables buttons when isLoading is true", () => {
+    render(
+      <PageChanger
+        changePageNext={() => {}}
+        changePagePrev={() => {}}
+        isLoading={true}
+      />
+    );
 
     // Get the buttons by their aria-labels
     const nextButton = screen.queryByLabelText(/next page button/i);
@@ -27,11 +40,17 @@ describe('PageChanger component', () => {
     expect(prevButton).toBeDisabled();
   });
 
-  test('PageChanger component triggers changePageNext and changePagePrev functions when buttons are clicked', () => {
+  test("PageChanger component triggers changePageNext and changePagePrev functions when buttons are clicked", () => {
     const changePageNext = jest.fn();
     const changePagePrev = jest.fn();
 
-    render(<PageChanger changePageNext={changePageNext} changePagePrev={changePagePrev} isLoading={false} />);
+    render(
+      <PageChanger
+        changePageNext={changePageNext}
+        changePagePrev={changePagePrev}
+        isLoading={false}
+      />
+    );
 
     const nextButton = screen.getByLabelText(/next page button/i);
     const prevButton = screen.getByLabelText(/prev page button/i);
@@ -44,5 +63,4 @@ describe('PageChanger component', () => {
     expect(changePageNext).toHaveBeenCalledTimes(1);
     expect(changePagePrev).toHaveBeenCalledTimes(1);
   });
-
 });

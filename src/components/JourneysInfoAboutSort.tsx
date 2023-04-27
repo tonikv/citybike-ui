@@ -3,15 +3,21 @@
 */
 
 type sortOrderType = "asc" | "desc";
-type sortByType = "count" | "Departure_station_name" | "Return_station_name" | "Covered_distance" | "Duration";
+type sortByType =
+  | "count"
+  | "Departure_station_name"
+  | "Return_station_name"
+  | "Covered_distance"
+  | "Duration";
 
 interface IInfoSort {
-    sortBy: sortByType,
-    sortOrder: sortOrderType,
+  sortBy: sortByType;
+  sortOrder: sortOrderType;
 }
 
 const JourneysInfoSort: React.FC<IInfoSort> = ({ sortBy, sortOrder }) => {
-  const sortOrderDisplay = sortOrder === "asc" ? "in ascending order" : "in descending order"
+  const sortOrderDisplay =
+    sortOrder === "asc" ? "in ascending order" : "in descending order";
   let sortDisplay = "";
 
   switch (sortBy) {
@@ -35,14 +41,12 @@ const JourneysInfoSort: React.FC<IInfoSort> = ({ sortBy, sortOrder }) => {
       break;
   }
 
-
-    return (
+  return (
     <p className="infoSortContainer">
-      Sorted by{' '}
-      <span className="highlightSort">{sortDisplay}</span>{' '}
+      Sorted by <span className="highlightSort">{sortDisplay}</span>{" "}
       {sortOrderDisplay}
     </p>
-  )
-}
+  );
+};
 
-export default JourneysInfoSort
+export default JourneysInfoSort;

@@ -5,7 +5,10 @@ interface IUseFetchData<T> {
   isLoading: boolean;
 }
 
-export function useFetchData<T>(url: string, defaultValue: T): IUseFetchData<T> {
+export function useFetchData<T>(
+  url: string,
+  defaultValue: T
+): IUseFetchData<T> {
   const [data, setData] = useState(defaultValue);
   const [isLoading, setIsLoading] = useState(false);
 

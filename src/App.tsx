@@ -1,7 +1,7 @@
-import Header from './components/Header';
-import Journeys from './components/Journeys';
-import Stations from './components/Stations';
-import './styles/App.css';
+import Header from "./components/Header";
+import Journeys from "./components/Journeys";
+import Stations from "./components/Stations";
+import "./styles/App.css";
 
 function App() {
   return (
