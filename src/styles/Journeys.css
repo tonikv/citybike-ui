@@ -80,9 +80,9 @@
 }
 
 .highlightSort {
-    background-color: rgb(224, 253, 32);
+    background-color: rgb(4, 5, 98);
     box-shadow: 0 0 5px 1px rgb(0, 0, 0);
-    color: black;
+    color: white;
     padding: 5px;
     border-radius: 1px;
 }
