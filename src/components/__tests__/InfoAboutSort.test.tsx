@@ -3,18 +3,18 @@ import InfoAboutSort from '../JourneysInfoAboutSort';
 
 describe('InfoAboutSort component', () => {
   test('renders info about query descending', () => {
-    render(<InfoAboutSort sortBy={"DURATION"} sortOrder={"desc"} />);
+    render(<InfoAboutSort sortBy={"Duration"} sortOrder={"desc"} />);
     const pElement = screen.getByText(/Sorted by/i);
     expect(pElement).toBeInTheDocument();
     expect(pElement).toHaveStyle('display: block');
-    expect(pElement).toHaveTextContent("Sorted by DURATION in descending order");
+    expect(pElement).toHaveTextContent("Sorted by Duration in descending order");
   });
 
   test('renders info about query ascending', () => {
-    render(<InfoAboutSort sortBy={"DISTANCE"} sortOrder={"asc"} />);
+    render(<InfoAboutSort sortBy={"Covered_distance"} sortOrder={"asc"} />);
     const pElement = screen.getByText(/Sorted by/i);
     expect(pElement).toBeInTheDocument();
-    expect(pElement).toHaveTextContent("Sorted by DISTANCE in ascending order");
+    expect(pElement).toHaveTextContent("Sorted by Distance in ascending order");
   });
 
 });

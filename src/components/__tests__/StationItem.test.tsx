@@ -29,7 +29,7 @@ describe('StationItem component', () => {
     expect(averageTo).toBeInTheDocument();
 
     // Check if the station's latitude and longitude are displayed
-    const latilongitudeText = screen.getByText(`latitude: ${station.y.toFixed(2)}, longitude: ${station.x.toFixed(2)}`);
+    const latilongitudeText = screen.getByText(`latitude: ${station.y.toFixed(4)}, longitude: ${station.x.toFixed(4)}`);
 
     expect(latilongitudeText).toBeInTheDocument();
   });
