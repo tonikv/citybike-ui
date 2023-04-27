@@ -35,7 +35,11 @@ jobs:
 
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/refactor' && github.event_name != 'pull_request'
-        run: |
-          npm run deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+          publish_branch: gh-pages
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: 'Deploy refactor branch to GitHub Pages'
