@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/citybike-ui/static/css/main.101cad63.css",
+    "main.css": "/citybike-ui/static/css/main.899582a4.css",
     "main.js": "/citybike-ui/static/js/main.07859017.js",
     "index.html": "/citybike-ui/index.html",
-    "main.101cad63.css.map": "/citybike-ui/static/css/main.101cad63.css.map",
+    "main.899582a4.css.map": "/citybike-ui/static/css/main.899582a4.css.map",
     "main.07859017.js.map": "/citybike-ui/static/js/main.07859017.js.map"
   },
   "entrypoints": [
-    "static/css/main.101cad63.css",
+    "static/css/main.899582a4.css",
     "static/js/main.07859017.js"
   ]
 }
