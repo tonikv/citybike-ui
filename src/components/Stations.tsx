@@ -9,6 +9,7 @@ import { useMemo } from "react";
 import StationItem from "./StationItem";
 import StationMap from "./StationMap";
 import StationSelect from "./StationSelect";
+import LoadSpinner from "./LoadSpinner";
 import "../styles/Stations.css";
 
 const STATIONS_URL = "https://citybike-typescript.onrender.com/stations/all";
@@ -30,7 +31,7 @@ const Stations = () => {
 
   const memoizedStation = useMemo(() => {
     if (isLoading) {
-      return <p>Loading stations...</p>;
+      return <LoadSpinner loadingText={"Stations loading"} />;
     }
 
     const changeStation = (event: React.ChangeEvent<HTMLSelectElement>) => {

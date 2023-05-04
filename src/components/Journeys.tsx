@@ -10,6 +10,7 @@ import {
 import { useState, useEffect } from "react";
 import PageChanger from "./JourneysPageChanger";
 import InfoAboutSort from "./JourneysInfoAboutSort";
+import LoadSpinner from "./LoadSpinner";
 import "../styles/Journeys.css";
 
 const Journeys = () => {
@@ -92,7 +93,7 @@ const Journeys = () => {
 
   // If no data is loaded, show loading text
   if (journeys === null) {
-    return <p>Loading journeys...</p>;
+    return <LoadSpinner loadingText={"Journeys loading"} />;
   }
 
   // If data is loaded, but not displayed, show button to display data
