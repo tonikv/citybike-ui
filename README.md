@@ -28,8 +28,8 @@ This project uses a GitHub Actions CI workflow to automate the testing, building
 
 The CI workflow includes the following steps:
 
-1. **Checkout repository**: Clones the repository using the `actions/checkout@v2` action.
-2. **Set up Node.js**: Sets up the specified Node.js version (in this case, 16) using the `actions/setup-node@v2` action.
+1. **Checkout repository**: Clones the repository using the `actions/checkout@v3` action.
+2. **Set up Node.js**: Sets up the specified Node.js version using the `actions/setup-node@v3` action.
 3. **Install dependencies**: Installs the project dependencies using `npm ci`.
 4. **Run lint**: Checks the code for linting issues using `npm run lint`.
 5. **Run tests**: Executes the unit tests using `npm test`.
