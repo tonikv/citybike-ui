@@ -21,8 +21,8 @@ describe("Stations component", () => {
     });
 
     render(<Stations />);
-    const loadingMessage = screen.getByText(/loading stations.../i);
-    expect(loadingMessage).toBeInTheDocument();
+    const loadingMessage = screen.getAllByText(/Stations loading/i);
+    expect(loadingMessage[0]).toBeInTheDocument();
   });
 
   test("renders StationSelect, StationItem, and StationMap components when data is available", async () => {
