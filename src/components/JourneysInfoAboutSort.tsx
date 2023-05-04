@@ -21,9 +21,6 @@ const JourneysInfoSort: React.FC<IInfoSort> = ({ sortBy, sortOrder }) => {
   let sortDisplay = "";
 
   switch (sortBy) {
-    case "count":
-      sortDisplay = "Count";
-      break;
     case "Departure_station_name":
       sortDisplay = "Departure Station";
       break;

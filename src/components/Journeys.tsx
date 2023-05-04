@@ -222,7 +222,7 @@ const Journeys = () => {
             ))}
           </tbody>
         </Table>
-        <div className="sameRow">
+        <div className="info-container">
           <InfoAboutSort sortBy={sortBy} sortOrder={sortOrder} />
           <PageChanger
             isLoading={isLoading}
