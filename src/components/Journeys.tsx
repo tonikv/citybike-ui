@@ -101,7 +101,6 @@ const Journeys = () => {
     return (
       <>
         <h1 className="header-style">
-          {" "}
           JOURNEYS LIST
           <span className="span-style">
             <Button size="sm" onClick={displayJourneysList}>
