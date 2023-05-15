@@ -50,7 +50,7 @@ const Journeys = () => {
     setDisplayJourneys(!displayJourneys);
   };
 
-  // Button event to change request params to journey data.
+  // Button events to change request params to journey data.
   const changeSortingOrder = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     const changeState = sortOrder === "asc" ? "desc" : "asc";
@@ -58,7 +58,6 @@ const Journeys = () => {
     setPageOptions(defaultPageOption);
   };
 
-  // Button event to change request params to journey data.
   const changeSortingRow = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     const button: HTMLButtonElement = event.currentTarget;
@@ -68,7 +67,6 @@ const Journeys = () => {
     journeysURI = `${JOURNEYS_URL}/${pageOptions.page}/${pageOptions.limit}/${sortBy}/${sortOrder}/`;
   };
 
-  // Button event to change request params to journey data.
   const changePageNext = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     const nextPage: IPageoptions = {
@@ -78,7 +76,6 @@ const Journeys = () => {
     setPageOptions(nextPage);
   };
 
-  // Button event to change request params to journey data.
   const changePagePrev = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     if (pageOptions.page === 0) {
@@ -147,7 +144,7 @@ const Journeys = () => {
                 style={{ width: "20%" }}
                 className="table-header-fixed-height"
               >
-                Departure Station{" "}
+                Departure Station
                 <Button
                   disabled={isLoading}
                   className="btn-style"
@@ -162,7 +159,7 @@ const Journeys = () => {
                 style={{ width: "20%" }}
                 className="table-header-fixed-height"
               >
-                Return Station{" "}
+                Return Station
                 <Button
                   disabled={isLoading}
                   className="btn-style"
@@ -177,7 +174,7 @@ const Journeys = () => {
                 style={{ width: "10%" }}
                 className="table-header-fixed-height"
               >
-                Dist km{" "}
+                Dist km
                 <Button
                   disabled={isLoading}
                   className="btn-style"
@@ -192,7 +189,7 @@ const Journeys = () => {
                 style={{ width: "10%" }}
                 className="table-header-fixed-height"
               >
-                Duration min{" "}
+                Duration min
                 <Button
                   disabled={isLoading}
                   className="btn-style"
